@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee98d67c517447b9ee088ad7127b54b, type: 3}
+  m_Name: WoodBlock
+  m_EditorClassIdentifier: 
+  blockType: 5
+  viewPrefab: {fileID: 5598897169319050828, guid: fca8a08fdba0c4e41a8f866f0752ca06,
+    type: 3}
+  BlockStrenght: 5
+  icon: {fileID: -2041772914, guid: 85aa799ef7db940d5950d7f0f19f3d66, type: 3}
