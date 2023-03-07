@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/LevelPoison.unity
     guid: e64c20d349f314a9d8b3a56892d00f9d
+  - enabled: 1
+    path: Assets/_Game/Scenes/LevelBuilder.unity
+    guid: 741b724bfd18a4fdc962852ca909fde4
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8b764b35337fe420d9f8aa964b6f8762,
       type: 2}

@@ -1,0 +1,16 @@
+{
+    "name": "MCPuzzle.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b6365ae97b4ab4c26aaf3281416cd27a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
