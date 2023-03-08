@@ -8,6 +8,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using Object = System.Object;
 
 namespace _Game.Scripts.Gameplay
@@ -38,7 +39,7 @@ namespace _Game.Scripts.Gameplay
         public static int TabId;
         public static bool[] Buttons;
         
-        private MapData CurrentMapData;
+        public static MapData CurrentMapData;
         private BlockType blockType;
         private ItemType itemType;
         public static List<SimpleBlock> _blocks;
@@ -46,7 +47,7 @@ namespace _Game.Scripts.Gameplay
         [MenuItem("Window/MapEditor")]
         public static void ShowWindow()
         {
-            GetWindow(typeof(MapEditor), true, "Map Editor");
+            GetWindow(typeof(MapEditor), false, "Map Editor");
             
             EditorSceneManager.OpenScene("Assets/_Game/Scenes/LevelBuilder.unity");
 
@@ -54,16 +55,15 @@ namespace _Game.Scripts.Gameplay
                 GameItemsConfig;
             MapConfig = AssetDatabase.LoadAssetAtPath("Assets/_Game/Configs/MapConfig.asset", typeof(ScriptableObject)) as
                 MapConfig;
-            
             Pointer = AssetDatabase.LoadAssetAtPath("Assets/_Game/Prefabs/Pointer.prefab", typeof(Transform)) as
                 Transform;
 
             Pointer = Instantiate(Pointer);
-
-            root = new GameObject("root").transform;
+            root = new GameObject("BlocksView").transform;
             
             _blocks = new List<SimpleBlock>();
             Buttons = new bool[Enum.GetNames(typeof(MapEditorButtons)).Length];
+            
         }
         
         void OnGUI()
@@ -214,6 +214,15 @@ namespace _Game.Scripts.Gameplay
         {
             DestroyImmediate(Pointer.gameObject);
             DestroyImmediate(root.gameObject);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) position += Vector3Int.left;
+            if (Input.GetKeyDown(KeyCode.RightArrow)) position += Vector3Int.right;
+            if (Input.GetKeyDown(KeyCode.UpArrow)) position += Vector3Int.up;
+            if (Input.GetKeyDown(KeyCode.DownArrow)) position += Vector3Int.down;
+
         }
     }
 }
