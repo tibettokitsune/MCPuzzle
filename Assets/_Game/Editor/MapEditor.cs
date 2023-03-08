@@ -5,8 +5,11 @@ using _Game.Scripts.Configs;
 using _Game.Scripts.Gameplay.EvironmentObjects;
 using Sirenix.OdinInspector;
 using UnityEditor;
+using UnityEditor.Graphs;
 using UnityEditor.SceneManagement;
+using UnityEditorInternal;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace _Game.Scripts.Gameplay
 {
@@ -26,6 +29,7 @@ namespace _Game.Scripts.Gameplay
     {
         [OnValueChanged("OnPositionMove")]
         public static Vector3Int position;
+        public static Vector3 rotation;
         public static int MapDataID;
         
         public static GameItemsConfig GameItemsConfig;
@@ -42,8 +46,6 @@ namespace _Game.Scripts.Gameplay
         private ItemType itemType;
         public static List<SimpleBlock> _blocks;
         public static List<ItemController> _items;
-
-        public Rect windowRect = new Rect(100, 100, 200, 200);
         
         [MenuItem("Window/MapEditor")]
         public static void ShowWindow()
@@ -64,9 +66,11 @@ namespace _Game.Scripts.Gameplay
             
             _blocks = new List<SimpleBlock>();
             _items = new List<ItemController>();
-            
+
             Buttons = new bool[Enum.GetNames(typeof(MapEditorButtons)).Length];
+            
         }
+
 
         void OnGUI()
         {
@@ -84,8 +88,6 @@ namespace _Game.Scripts.Gameplay
             Buttons[(int) MapEditorButtons.LoadMap] = GUILayout.Button("Load");
             Buttons[(int) MapEditorButtons.SaveMap] = GUILayout.Button("Save");
             EditorGUILayout.EndHorizontal();
-
-            // CurrentMapData = EditorGUILayout.ObjectField(CurrentMapData,typeof(MapData), true);
             OnPositionMove();
             if (GUI.changed)
             {
@@ -96,8 +98,39 @@ namespace _Game.Scripts.Gameplay
 
                 if(Buttons[(int) MapEditorButtons.AddBlock]) AddBlock();
                 if(Buttons[(int) MapEditorButtons.RemoveBlock]) RemoveBlock();
-                
+
+                if (Buttons[(int) MapEditorButtons.AddItem]) AddItem();
+                if (Buttons[(int) MapEditorButtons.RemoveItem]) RemoveItem();
+
             }
+            
+            
+            this.Repaint();
+        }
+
+        private void RemoveItem()
+        {
+            CurrentMapData.itemsData.Remove(CurrentMapData.itemsData.Find(x => x.position.Equals(position)));
+            
+            Clear();
+            Build();
+        }
+
+        private void AddItem()
+        {
+            if (CurrentMapData.itemsData.Any(x => x.position.Equals(position)))
+            {
+                RemoveItem();
+            }
+            CurrentMapData.itemsData.Add(new MapItemsData()
+            {
+                itemType = itemType,
+                position = position,
+                rotation = rotation
+            });
+            
+            Clear();
+            Build();
         }
 
         private void ChangeGameItemsTab()
@@ -119,15 +152,19 @@ namespace _Game.Scripts.Gameplay
                 {
                     EditorGUILayout.BeginHorizontal();
                     itemType = (ItemType) EditorGUILayout.EnumPopup("Item type", itemType);
-                    Buttons[(int) MapEditorButtons.AddItem] = GUILayout.Button("Create item");
-                    Buttons[(int) MapEditorButtons.RemoveItem] = GUILayout.Button("Remove item");
+                    rotation = EditorGUILayout.Vector3Field("Rotation", rotation);
+                    EditorGUILayout.Space();
+                    Buttons[(int) MapEditorButtons.AddItem] = GUILayout.Button("+");
+                    Buttons[(int) MapEditorButtons.RemoveItem] = GUILayout.Button("-");
                     EditorGUILayout.EndHorizontal();
+                    
                 }
                     break;
             }
 
             EditorGUILayout.EndVertical();
         }
+        
 
         private void OnPositionMove()
         {
