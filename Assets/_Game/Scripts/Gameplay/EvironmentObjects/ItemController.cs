@@ -28,13 +28,17 @@ namespace _Game.Scripts.Gameplay.EvironmentObjects
 
         public virtual void Start()
         {
-            transform.position = Position;
-            transform.eulerAngles = Rotation;
-
+            SetupPosition();
             foreach (var occupiedBlock in OccupiedBlocks)
             {
                 _mapController.DoBlockNotWalkable(RealPosition(occupiedBlock));
             }
+        }
+
+        public void SetupPosition()
+        {
+            transform.position = Position;
+            transform.eulerAngles = Rotation;
         }
 
         public void Setup(MapItemsData itemsData, ItemPreset preset)
@@ -46,7 +50,7 @@ namespace _Game.Scripts.Gameplay.EvironmentObjects
             InteractionBlocks = preset.interactionBlocks;
             ItemType = preset.itemType;
         }
-        
+
         protected bool IsBlockInteraction(Vector3Int pos)
         {
             foreach (var intBlock in InteractionBlocks)

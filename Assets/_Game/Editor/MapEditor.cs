@@ -7,9 +7,6 @@ using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-using Object = System.Object;
 
 namespace _Game.Scripts.Gameplay
 {
@@ -21,7 +18,8 @@ namespace _Game.Scripts.Gameplay
         AddBlock = 2,
         RemoveBlock = 3,
         AddItem = 4,
-        RemoveItem = 5
+        RemoveItem = 5,
+        Rebuild = 6
     }
     
     public class MapEditor : EditorWindow
@@ -43,6 +41,9 @@ namespace _Game.Scripts.Gameplay
         private BlockType blockType;
         private ItemType itemType;
         public static List<SimpleBlock> _blocks;
+        public static List<ItemController> _items;
+
+        public Rect windowRect = new Rect(100, 100, 200, 200);
         
         [MenuItem("Window/MapEditor")]
         public static void ShowWindow()
@@ -55,25 +56,56 @@ namespace _Game.Scripts.Gameplay
                 GameItemsConfig;
             MapConfig = AssetDatabase.LoadAssetAtPath("Assets/_Game/Configs/MapConfig.asset", typeof(ScriptableObject)) as
                 MapConfig;
+            
             Pointer = AssetDatabase.LoadAssetAtPath("Assets/_Game/Prefabs/Pointer.prefab", typeof(Transform)) as
                 Transform;
-
             Pointer = Instantiate(Pointer);
             root = new GameObject("BlocksView").transform;
             
             _blocks = new List<SimpleBlock>();
-            Buttons = new bool[Enum.GetNames(typeof(MapEditorButtons)).Length];
+            _items = new List<ItemController>();
             
+            Buttons = new bool[Enum.GetNames(typeof(MapEditorButtons)).Length];
         }
-        
+
         void OnGUI()
         {
             position = EditorGUILayout.Vector3IntField("Position", position);
 
             EditorGUILayout.Space();
+
+            ChangeGameItemsTab();
+            EditorGUILayout.Space();
+            MapDataID = EditorGUILayout.IntField("MapID", MapDataID);
+
+            EditorGUILayout.BeginHorizontal();
+            Buttons[(int) MapEditorButtons.Rebuild] = GUILayout.Button("Rebuild");
+            EditorGUILayout.Space();
+            Buttons[(int) MapEditorButtons.LoadMap] = GUILayout.Button("Load");
+            Buttons[(int) MapEditorButtons.SaveMap] = GUILayout.Button("Save");
+            EditorGUILayout.EndHorizontal();
+
+            // CurrentMapData = EditorGUILayout.ObjectField(CurrentMapData,typeof(MapData), true);
+            OnPositionMove();
+            if (GUI.changed)
+            {
+                OnPositionMove();
+                
+                if(Buttons[(int) MapEditorButtons.LoadMap]) LoadMapData();
+                if(Buttons[(int) MapEditorButtons.SaveMap]) SaveMapData();
+
+                if(Buttons[(int) MapEditorButtons.AddBlock]) AddBlock();
+                if(Buttons[(int) MapEditorButtons.RemoveBlock]) RemoveBlock();
+                
+            }
+        }
+
+        private void ChangeGameItemsTab()
+        {
             EditorGUILayout.BeginVertical();
-            TabId = GUILayout.Toolbar (TabId, new string[] {"Blocks", "Units"});
-            switch (TabId) {
+            TabId = GUILayout.Toolbar(TabId, new string[] {"Blocks", "Units"});
+            switch (TabId)
+            {
                 case 0:
                 {
                     EditorGUILayout.BeginHorizontal();
@@ -93,26 +125,8 @@ namespace _Game.Scripts.Gameplay
                 }
                     break;
             }
+
             EditorGUILayout.EndVertical();
-            EditorGUILayout.Space();
-            MapDataID = EditorGUILayout.IntField("MapID", MapDataID);
-
-            Buttons[(int) MapEditorButtons.LoadMap] = GUILayout.Button("Load");
-            Buttons[(int) MapEditorButtons.SaveMap] = GUILayout.Button("Save");
-
-            // CurrentMapData = EditorGUILayout.ObjectField(CurrentMapData,typeof(MapData), true);
-            OnPositionMove();
-            if (GUI.changed)
-            {
-                OnPositionMove();
-                
-                if(Buttons[(int) MapEditorButtons.LoadMap]) LoadMapData();
-                if(Buttons[(int) MapEditorButtons.SaveMap]) SaveMapData();
-
-                if(Buttons[(int) MapEditorButtons.AddBlock]) AddBlock();
-                if(Buttons[(int) MapEditorButtons.RemoveBlock]) RemoveBlock();
-                
-            }
         }
 
         private void OnPositionMove()
@@ -151,14 +165,14 @@ namespace _Game.Scripts.Gameplay
                     newData[i] = MapConfig.mapsData[i];
                 }
 
-                newData[^1] = CurrentMapData;
+                newData[^1] = CurrentMapData.Clone();
 
                 MapConfig.mapsData = newData;
 
             }
             else
             {
-                MapConfig.mapsData[MapDataID] = CurrentMapData;
+                MapConfig.mapsData[MapDataID] = CurrentMapData.Clone();
             }
         }
         
@@ -173,6 +187,15 @@ namespace _Game.Scripts.Gameplay
                     _block.Build(GameItemsConfig, root);
                     _blocks.Add(_block);
                 }
+            }
+
+            foreach (var item in CurrentMapData.itemsData)
+            {
+                var currentPreset = GameItemsConfig.itemPresets.First(x => x.itemType == item.itemType);
+                var instance = Instantiate(currentPreset.viewPrefab, root);
+                _items.Add(instance);
+                instance.Setup(item, currentPreset);
+                instance.SetupPosition();
             }
         }
 

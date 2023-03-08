@@ -14,17 +14,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapsData:
   - blockData:
-    - position: {x: 13, y: 0, z: 14}
-      blockType: 3
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
     - position: {x: 12, y: 0, z: 13}
       blockType: 3
     - position: {x: 14, y: 0, z: 13}
       blockType: 3
+    - position: {x: 14, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
     - position: {x: 13, y: 0, z: 15}
-      blockType: 3
+      blockType: 2
     - position: {x: 13, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
+    itemsData:
+    - position: {x: 13, y: 1, z: 16}
+      rotation: {x: 0, y: 0, z: 0}
+      itemType: 0
+  - blockData:
+    - position: {x: 13, y: 0, z: 12}
+      blockType: 3
+    - position: {x: 12, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 13}
       blockType: 3
     - position: {x: 13, y: 0, z: 13}
       blockType: 2
@@ -32,46 +59,314 @@ MonoBehaviour:
       blockType: 2
     - position: {x: 12, y: 0, z: 12}
       blockType: 2
-    - position: {x: 12, y: 0, z: 14}
-      blockType: 2
-    - position: {x: 12, y: 0, z: 15}
-      blockType: 2
     - position: {x: 12, y: 0, z: 16}
       blockType: 2
     - position: {x: 14, y: 0, z: 16}
       blockType: 2
-    - position: {x: 14, y: 0, z: 15}
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 16}
       blockType: 2
     - position: {x: 14, y: 0, z: 14}
       blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 2, z: 15}
+      blockType: 5
+    - position: {x: 14, y: 1, z: 15}
+      blockType: 5
+    - position: {x: 12, y: 1, z: 15}
+      blockType: 5
+    - position: {x: 14, y: 3, z: 15}
+      blockType: 5
+    - position: {x: 12, y: 3, z: 15}
+      blockType: 5
     itemsData:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
   - blockData:
-    - position: {x: 13, y: 0, z: 14}
-      blockType: 3
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
     - position: {x: 12, y: 0, z: 13}
       blockType: 3
     - position: {x: 14, y: 0, z: 13}
       blockType: 3
+    - position: {x: 13, y: 0, z: 13}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
     - position: {x: 13, y: 0, z: 15}
-      blockType: 3
+      blockType: 2
     - position: {x: 13, y: 0, z: 16}
-      blockType: 3
-    - position: {x: 13, y: 2, z: 15}
-      blockType: 6
+      blockType: 2
+    - position: {x: 14, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
     itemsData:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
   - blockData:
+    - position: {x: 13, y: 0, z: 12}
+      blockType: 3
+    - position: {x: 12, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 13}
+      blockType: 3
     - position: {x: 13, y: 0, z: 13}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 15}
       blockType: 2
     - position: {x: 13, y: 0, z: 16}
       blockType: 2
+    - position: {x: 14, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
+    itemsData:
+    - position: {x: 13, y: 1, z: 16}
+      rotation: {x: 0, y: 0, z: 0}
+      itemType: 0
+  - blockData:
+    - position: {x: 13, y: 0, z: 12}
+      blockType: 3
+    - position: {x: 12, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 13, y: 0, z: 13}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
+    itemsData:
+    - position: {x: 13, y: 1, z: 16}
+      rotation: {x: 0, y: 0, z: 0}
+      itemType: 0
+  - blockData:
+    - position: {x: 13, y: 0, z: 12}
+      blockType: 3
+    - position: {x: 12, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 13}
+      blockType: 3
+    itemsData:
+    - position: {x: 13, y: 1, z: 16}
+      rotation: {x: 0, y: 0, z: 0}
+      itemType: 0
+  - blockData:
+    - position: {x: 13, y: 0, z: 12}
+      blockType: 3
+    - position: {x: 12, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 13, y: 0, z: 13}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
+    itemsData:
+    - position: {x: 13, y: 1, z: 16}
+      rotation: {x: 0, y: 0, z: 0}
+      itemType: 0
+  - blockData:
+    - position: {x: 13, y: 0, z: 12}
+      blockType: 3
+    - position: {x: 12, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 13}
+      blockType: 3
+    itemsData:
+    - position: {x: 13, y: 1, z: 16}
+      rotation: {x: 0, y: 0, z: 0}
+      itemType: 0
+  - blockData:
+    - position: {x: 13, y: 0, z: 12}
+      blockType: 3
+    - position: {x: 12, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 13}
+      blockType: 3
+    itemsData:
+    - position: {x: 13, y: 1, z: 16}
+      rotation: {x: 0, y: 0, z: 0}
+      itemType: 0
+  - blockData:
+    - position: {x: 13, y: 0, z: 12}
+      blockType: 3
+    - position: {x: 12, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 13}
+      blockType: 3
+    - position: {x: 14, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 12}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 16}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 14}
+      blockType: 2
+    - position: {x: 12, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 14, y: 0, z: 15}
+      blockType: 2
+    - position: {x: 13, y: 0, z: 13}
+      blockType: 3
     itemsData:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}

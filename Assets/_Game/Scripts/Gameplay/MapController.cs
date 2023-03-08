@@ -16,6 +16,12 @@ namespace _Game.Scripts.Gameplay
     {
         public Vector3Int position;
         public BlockType blockType;
+
+        public MapBlockData(MapBlockData item)
+        {
+            position = item.position;
+            blockType = item.blockType;
+        }
     }
     
     [System.Serializable]
@@ -24,6 +30,13 @@ namespace _Game.Scripts.Gameplay
         public Vector3Int position;
         public Vector3 rotation;
         public ItemType itemType;
+
+        public MapItemsData(MapItemsData item)
+        {
+            position = item.position;
+            rotation = item.rotation;
+            itemType = item.itemType;
+        }
     }
     
     public interface IMapController
