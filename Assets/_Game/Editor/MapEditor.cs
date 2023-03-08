@@ -8,33 +8,46 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Object = System.Object;
 
 namespace _Game.Scripts.Gameplay
 {
 
+    public enum MapEditorButtons
+    {
+        LoadMap = 0 ,
+        SaveMap = 1,
+        AddBlock = 2,
+        RemoveBlock = 3,
+        AddItem = 4,
+        RemoveItem = 5
+    }
+    
     public class MapEditor : EditorWindow
     {
         [OnValueChanged("OnPositionMove")]
         public static Vector3Int position;
-
         public static int MapDataID;
         
         public static GameItemsConfig GameItemsConfig;
         public static MapConfig MapConfig;
+        
         private static Transform Pointer;
         private static Transform root;
 
-        public static int tab;
+        public static int TabId;
+        public static bool[] Buttons;
         
         private MapData CurrentMapData;
         private BlockType blockType;
         private ItemType itemType;
         public static List<SimpleBlock> _blocks;
         
-        [MenuItem("Window/Map editor")]
+        [MenuItem("Window/MapEditor")]
         public static void ShowWindow()
         {
-            var window = EditorWindow.GetWindow(typeof(MapEditor));
+            GetWindow(typeof(MapEditor), true, "Map Editor");
+            
             EditorSceneManager.OpenScene("Assets/_Game/Scenes/LevelBuilder.unity");
 
             GameItemsConfig = AssetDatabase.LoadAssetAtPath("Assets/_Game/Configs/GameItems.asset", typeof(ScriptableObject)) as
@@ -50,6 +63,7 @@ namespace _Game.Scripts.Gameplay
             root = new GameObject("root").transform;
             
             _blocks = new List<SimpleBlock>();
+            Buttons = new bool[Enum.GetNames(typeof(MapEditorButtons)).Length];
         }
         
         void OnGUI()
@@ -57,39 +71,48 @@ namespace _Game.Scripts.Gameplay
             position = EditorGUILayout.Vector3IntField("Position", position);
 
             EditorGUILayout.Space();
-
-            tab = GUILayout.Toolbar (tab, new string[] {"Blocks", "Units"});
-            switch (tab) {
+            EditorGUILayout.BeginVertical();
+            TabId = GUILayout.Toolbar (TabId, new string[] {"Blocks", "Units"});
+            switch (TabId) {
                 case 0:
                 {
+                    EditorGUILayout.BeginHorizontal();
                     blockType = (BlockType) EditorGUILayout.EnumPopup("Block type", blockType);
-                    var addBlockButton = GUILayout.Button("Create block");
-                    var removeBlockButton = GUILayout.Button("Remove block");
+                    Buttons[(int) MapEditorButtons.AddBlock] = GUILayout.Button("Create block");
+                    Buttons[(int) MapEditorButtons.RemoveBlock] = GUILayout.Button("Remove block");
+                    EditorGUILayout.EndHorizontal();
                 }
                     break;
                 case 1:
                 {
+                    EditorGUILayout.BeginHorizontal();
                     itemType = (ItemType) EditorGUILayout.EnumPopup("Item type", itemType);
-                    var addItemButton = GUILayout.Button("Create item");
-                    var removeItemButton = GUILayout.Button("Remove item");
+                    Buttons[(int) MapEditorButtons.AddItem] = GUILayout.Button("Create item");
+                    Buttons[(int) MapEditorButtons.RemoveItem] = GUILayout.Button("Remove item");
+                    EditorGUILayout.EndHorizontal();
                 }
                     break;
             }
-            
-            
-            if (GUI.changed)
-            {
-                OnPositionMove();
-            }
-            
+            EditorGUILayout.EndVertical();
             EditorGUILayout.Space();
             MapDataID = EditorGUILayout.IntField("MapID", MapDataID);
 
-            var loadBtn = GUILayout.Button("Load");
-            var saveData = GUILayout.Button("Save");
+            Buttons[(int) MapEditorButtons.LoadMap] = GUILayout.Button("Load");
+            Buttons[(int) MapEditorButtons.SaveMap] = GUILayout.Button("Save");
 
-            
+            // CurrentMapData = EditorGUILayout.ObjectField(CurrentMapData,typeof(MapData), true);
             OnPositionMove();
+            if (GUI.changed)
+            {
+                OnPositionMove();
+                
+                if(Buttons[(int) MapEditorButtons.LoadMap]) LoadMapData();
+                if(Buttons[(int) MapEditorButtons.SaveMap]) SaveMapData();
+
+                if(Buttons[(int) MapEditorButtons.AddBlock]) AddBlock();
+                if(Buttons[(int) MapEditorButtons.RemoveBlock]) RemoveBlock();
+                
+            }
         }
 
         private void OnPositionMove()
@@ -117,10 +140,9 @@ namespace _Game.Scripts.Gameplay
             Build();
         }
 
-        [Button]
-        public void SaveMapData(int level)
+        public void SaveMapData()
         {
-            if (level > MapConfig.mapsData.Length - 1)
+            if (MapDataID > MapConfig.mapsData.Length - 1)
             {
                 var newData = new MapData[MapConfig.mapsData.Length + 1];
 
@@ -136,10 +158,8 @@ namespace _Game.Scripts.Gameplay
             }
             else
             {
-                MapConfig.mapsData[level] = CurrentMapData;
+                MapConfig.mapsData[MapDataID] = CurrentMapData;
             }
-            
-            
         }
         
         
@@ -156,7 +176,6 @@ namespace _Game.Scripts.Gameplay
             }
         }
 
-        [Button]
         private void Clear()
         {
             var lim = root.childCount;
@@ -166,7 +185,6 @@ namespace _Game.Scripts.Gameplay
             }
         }
         
-        [Button]
         private void AddBlock()
         {
             if (CurrentMapData.blockData.Any(x => x.position.Equals(position)))
@@ -181,10 +199,8 @@ namespace _Game.Scripts.Gameplay
             
             Clear();
             Build();
-            // newData[^1] = 
         }
         
-        [Button]
         private void RemoveBlock()
         {
             CurrentMapData.blockData.Remove(CurrentMapData.blockData.Find(x => x.position.Equals(position)));
