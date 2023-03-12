@@ -22,6 +22,8 @@ public class SceneController : IInitializable, ISceneController, ITickable
     private Queue<AsyncOperation> _loadingOperations = new Queue<AsyncOperation>();
 
     private string _loadedLevel;
+
+    private const int LevelLoop = 5;
     public void Initialize()
     {
         MoveToCurrentLevel();
@@ -53,7 +55,7 @@ public class SceneController : IInitializable, ISceneController, ITickable
         if (string.IsNullOrEmpty(_scenesConfig.overrideScene))
         {
             var currentLevel = _dataController.PlayerData.Value.level;
-            return _scenesConfig.sceneNames[currentLevel % _scenesConfig.sceneNames.Length];
+            return _scenesConfig.sceneNames[currentLevel / LevelLoop % _scenesConfig.sceneNames.Length];
         }
         
         return _scenesConfig.overrideScene;

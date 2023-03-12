@@ -11,7 +11,7 @@ namespace _Game.Scripts.Configs
 
         public ItemPreset[] itemPresets;
 
-        public UnitController[] units;
+        public UnitPreset[] units;
         
         public DestructionBlock destructionBlockPrefab;
     }

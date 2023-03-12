@@ -6,7 +6,7 @@ namespace _Game.Scripts.Gameplay
 {
     public interface IUnitSpawner
     {
-        public UnitController SpawnUnit(UnitController unitController);
+        public UnitController SpawnUnit(int id);
 
         public UnitController SpawnPlayer();
     }
@@ -21,10 +21,10 @@ namespace _Game.Scripts.Gameplay
         {
             _factory = factory;
         }
-        public UnitController SpawnUnit(UnitController unitController) => _factory.Create(unitController);
+        public UnitController SpawnUnit(int id) => _factory.Create(_config.units[id].gameUnit);
         public UnitController SpawnPlayer()
         {
-            var unit = _factory.Create(_config.units[_dataController.PlayerData.Value.skinId]);
+            var unit = _factory.Create(_config.units[_dataController.PlayerData.Value.skinId].gameUnit);
             unit.SetupUnit(_mapConfig.CurrentData(_dataController.PlayerData.Value.level).playerData.position, 
                 _mapConfig.CurrentData(_dataController.PlayerData.Value.level).playerData.rotation);
             return unit;

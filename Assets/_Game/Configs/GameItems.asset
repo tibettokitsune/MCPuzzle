@@ -22,6 +22,6 @@ MonoBehaviour:
   itemPresets:
   - {fileID: 11400000, guid: adad10b1c957e45c5aee6f6801185dfe, type: 2}
   units:
-  - {fileID: 845087717544580319, guid: 201d853f6e07949849f74f6a7df3ff02, type: 3}
+  - {fileID: 11400000, guid: cfbfa8a7ddac043ceb34ae1c3d89afff, type: 2}
   destructionBlockPrefab: {fileID: 7369439621850446816, guid: 736fd6135b9044c0db9ad19dc7228293,
     type: 3}
