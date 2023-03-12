@@ -99,7 +99,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
     playerData:
-      position: {x: 13, y: 1, z: 13}
+      position: {x: 13, y: 2, z: 13}
       rotation: {x: 0, y: 0, z: 0}
       viewID: 0
     unitsData: []
@@ -139,7 +139,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
     playerData:
-      position: {x: 0, y: 0, z: 0}
+      position: {x: 13, y: 2, z: 13}
       rotation: {x: 0, y: 0, z: 0}
       viewID: 0
     unitsData: []
@@ -179,7 +179,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
     playerData:
-      position: {x: 0, y: 0, z: 0}
+      position: {x: 13, y: 2, z: 13}
       rotation: {x: 0, y: 0, z: 0}
       viewID: 0
     unitsData: []
@@ -219,7 +219,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
     playerData:
-      position: {x: 0, y: 0, z: 0}
+      position: {x: 13, y: 2, z: 13}
       rotation: {x: 0, y: 0, z: 0}
       viewID: 0
     unitsData: []
@@ -259,7 +259,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
     playerData:
-      position: {x: 0, y: 0, z: 0}
+      position: {x: 13, y: 2, z: 13}
       rotation: {x: 0, y: 0, z: 0}
       viewID: 0
     unitsData: []
@@ -299,7 +299,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
     playerData:
-      position: {x: 0, y: 0, z: 0}
+      position: {x: 13, y: 2, z: 13}
       rotation: {x: 0, y: 0, z: 0}
       viewID: 0
     unitsData: []
@@ -339,7 +339,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
     playerData:
-      position: {x: 0, y: 0, z: 0}
+      position: {x: 13, y: 2, z: 13}
       rotation: {x: 0, y: 0, z: 0}
       viewID: 0
     unitsData: []
@@ -379,7 +379,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
     playerData:
-      position: {x: 0, y: 0, z: 0}
+      position: {x: 13, y: 2, z: 13}
       rotation: {x: 0, y: 0, z: 0}
       viewID: 0
     unitsData: []
@@ -419,7 +419,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
     playerData:
-      position: {x: 0, y: 0, z: 0}
+      position: {x: 13, y: 2, z: 13}
       rotation: {x: 0, y: 0, z: 0}
       viewID: 0
     unitsData: []

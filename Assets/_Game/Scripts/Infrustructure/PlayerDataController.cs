@@ -11,6 +11,8 @@ namespace _Game.Scripts.Infrustructure
     {
         public int level;
 
+        public int money;
+
         public int skinId;
         public PlayerData()
         {
@@ -22,6 +24,7 @@ namespace _Game.Scripts.Infrustructure
         ReactiveProperty<PlayerData> PlayerData { get; }
 
         void IncrementLevel();
+        void IncrementMoney(int range);
     }
     
     public class PlayerDataController : IPlayerDataController, IInitializable, IDisposable
@@ -30,6 +33,12 @@ namespace _Game.Scripts.Infrustructure
         public void IncrementLevel()
         {
             PlayerData.Value.level++;
+            PlayerData.SetValueAndForceNotify(PlayerData.Value);
+        }
+
+        public void IncrementMoney(int range)
+        {
+            PlayerData.Value.money += range;
             PlayerData.SetValueAndForceNotify(PlayerData.Value);
         }
 

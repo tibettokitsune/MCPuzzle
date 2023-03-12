@@ -9,13 +9,10 @@ namespace _Game.Scripts.Gameplay
     public class PlayerController : IInitializable
     {
         [Inject] private IUnitSpawner _unitSpawner;
-        [Inject] private IMapController _mapController;
         [Inject] private IInputController _inputController;
         [Inject] private LevelEvents _levelEvents;
         [Inject] private CinemachineVirtualCamera _virtualCamera;
         private UnitController _characterController;
-
-        private readonly CompositeDisposable _disposable = new CompositeDisposable();
 
         public void Initialize()
         {
@@ -25,17 +22,17 @@ namespace _Game.Scripts.Gameplay
             {
                 _characterController.Move(new Vector3Int(_.x, 0, _.y));
 
-            }).AddTo(_disposable);
+            }).AddTo(_characterController);
 
             _characterController.OnMovementComplete.Subscribe(cell =>
             {
                 _levelEvents.OnPlayerMove.Execute(cell);
-            }).AddTo(_disposable);
+            }).AddTo(_characterController);
 
             _inputController.OnTap.Take(1).Subscribe(_ =>
             {
                 _levelEvents.OnGameStart.Execute();
-            }).AddTo(_disposable);
+            }).AddTo(_characterController);
 
         }
     }
