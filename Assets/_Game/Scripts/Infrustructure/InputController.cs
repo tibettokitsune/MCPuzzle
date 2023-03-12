@@ -1,7 +1,10 @@
 using _Game.Scripts.Infrustructure;
+using _Game.Scripts.UI;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using System;
+using System.Linq;
 
 namespace _Game.Scripts.Infrustructure
 {
@@ -16,6 +19,7 @@ namespace _Game.Scripts.Infrustructure
     
     public class InputController : IInputController, ITickable
     {
+        [Inject] private UIInputBlocker[] _uiBlockers;
         public ReactiveCommand OnTap { get; } = new ReactiveCommand();
         public ReactiveCommand OnTouch { get; } = new ReactiveCommand();
         public ReactiveCommand<Vector2Int> OnSwipe { get; } = new ReactiveCommand<Vector2Int>();
@@ -35,6 +39,7 @@ namespace _Game.Scripts.Infrustructure
         {
             if (Input.GetMouseButton(0))
             {
+                if(_uiBlockers.Any(x => x.IsOverUIElement)) return;
                 OnTap.Execute();
                 
                 if (!_isDetection)

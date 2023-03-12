@@ -1,5 +1,6 @@
 using _Game.Scripts.Gameplay;
 using _Game.Scripts.Infrustructure;
+using _Game.Scripts.UI;
 using Zenject;
 
 public class BootstrapInstaller : MonoInstaller
@@ -18,5 +19,7 @@ public class BootstrapInstaller : MonoInstaller
         Container.BindInterfacesTo<VibrationController>().AsSingle();
 
         Container.BindInterfacesTo<TutorialController>().AsSingle();
+
+        Container.Bind<UIInputBlocker>().FromComponentsInHierarchy().AsSingle();
     }
 }
