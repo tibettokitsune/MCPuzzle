@@ -63,7 +63,7 @@ namespace _Game.Scripts.Gameplay
         void DoBlockNotWalkable(Vector3Int position);
     }
 
-    public class MapController : IInitializable, IMapController
+    public class MapController : IInitializable, IMapController, IFixedTickable
     {
         [Inject] private IPlayerDataController _dataController;
         [Inject] private GameItemsConfig _itemsConfig;
@@ -199,5 +199,12 @@ namespace _Game.Scripts.Gameplay
         private List<MapBlockData> CurrentBlocksData() => _mapConfig.CurrentData(_dataController.PlayerData.Value.level).blockData;
 
         private List<MapItemsData> CurrentItemsData() => _mapConfig.CurrentData(_dataController.PlayerData.Value.level).itemsData;
+        public void FixedTick()
+        {
+            foreach (var vlBlockController in _block)
+            {
+                vlBlockController.Update();
+            }
+        }
     }
 }

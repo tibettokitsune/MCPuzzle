@@ -15,6 +15,8 @@ namespace _Game.Scripts.Gameplay
             {
                 _meshRenderer.sharedMaterial = _materials[stage];
             }
+
+            _meshRenderer.enabled = amount < 1f;
         }
     }
 }

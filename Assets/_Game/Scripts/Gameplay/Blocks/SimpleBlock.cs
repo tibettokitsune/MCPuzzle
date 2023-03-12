@@ -12,6 +12,11 @@ namespace _Game.Scripts.Gameplay
         private float _defaultStrenght;
 
         private DestructionBlock _destructionBlock;
+
+        private float _lastDamageTime;
+        private const float RecoveryDelay = 0.3f;
+        private const float RecoveryCounter = 2f;
+        
         public SimpleBlock(Vector3Int position , BlockType blockType) : base(position, blockType)
         {
             Walkable = false;
@@ -58,11 +63,24 @@ namespace _Game.Scripts.Gameplay
             
             _destructionBlock.gameObject.SetActive(true);
             _destructionBlock.UpdateDestructionStage(Strenght / _defaultStrenght);
+            _lastDamageTime = Time.time;
         }
 
         public void Clear()
         {
             Object.DestroyImmediate(View);
+        }
+
+        public override void Update()
+        {
+            if (Strenght < _defaultStrenght && Time.time - _lastDamageTime > RecoveryDelay)
+            {
+                Strenght += Time.deltaTime * _defaultStrenght * RecoveryCounter;
+                Strenght = Mathf.Min(Strenght, _defaultStrenght);
+                
+                if(Strenght >= _defaultStrenght)_destructionBlock.UpdateDestructionStage(1);
+                else _destructionBlock.UpdateDestructionStage(Strenght / _defaultStrenght);
+            }
         }
     }
 }

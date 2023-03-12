@@ -70,5 +70,7 @@ namespace _Game.Scripts.Gameplay
         {
             
         }
+        
+        public virtual void Update(){}
     }
 }
