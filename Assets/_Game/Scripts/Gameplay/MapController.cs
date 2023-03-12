@@ -7,7 +7,6 @@ using _Game.Scripts.Infrustructure;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using Object = UnityEngine.Object;
 
 namespace _Game.Scripts.Gameplay
 {
@@ -36,6 +35,21 @@ namespace _Game.Scripts.Gameplay
             position = item.position;
             rotation = item.rotation;
             itemType = item.itemType;
+        }
+    }
+    
+    [System.Serializable]
+    public struct UnitMapData
+    {
+        public Vector3Int position;
+        public Vector3 rotation;
+        public int viewID;
+
+        public UnitMapData(UnitMapData item)
+        {
+            position = item.position;
+            rotation = item.rotation;
+            viewID = item.viewID;
         }
     }
     
@@ -129,8 +143,6 @@ namespace _Game.Scripts.Gameplay
             {
                 var currentPreset = _itemsConfig.itemPresets.First(x => x.itemType == item.itemType);
                 var instance = _itemSpawner.SpawnItem(currentPreset.viewPrefab);
-                // var instance = Object.Instantiate(currentPreset.viewPrefab);
-                
                 instance.Setup(item, currentPreset);
             }
         }
@@ -184,11 +196,8 @@ namespace _Game.Scripts.Gameplay
             _block[position.x, position.y, position.z].Walkable = false;
         }
 
-        private List<MapBlockData> CurrentBlocksData() => CurrentMapData().blockData;
+        private List<MapBlockData> CurrentBlocksData() => _mapConfig.CurrentData(_dataController.PlayerData.Value.level).blockData;
 
-        private List<MapItemsData> CurrentItemsData() => CurrentMapData().itemsData;
-        
-        private MapData CurrentMapData() =>
-            _mapConfig.mapsData[_dataController.PlayerData.Value.level % _mapConfig.mapsData.Length];
+        private List<MapItemsData> CurrentItemsData() => _mapConfig.CurrentData(_dataController.PlayerData.Value.level).itemsData;
     }
 }

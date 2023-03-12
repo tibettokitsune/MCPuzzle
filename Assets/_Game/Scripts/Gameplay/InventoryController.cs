@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using _Game.Scripts.Infrustructure;
 using UniRx;
-using UnityEngine;
 using Zenject;
 
 namespace _Game.Scripts.Gameplay

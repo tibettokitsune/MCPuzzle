@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 
 #if UNITY_EDITOR || UNITY_EDITOR_OSX || UNITY_EDITOR_64
-using UnityEngine;
 #endif
 namespace _Game.Scripts.Configs
 {

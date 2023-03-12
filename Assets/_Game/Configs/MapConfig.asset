@@ -42,10 +42,17 @@ MonoBehaviour:
       blockType: 2
     - position: {x: 14, y: 0, z: 15}
       blockType: 2
+    - position: {x: 13, y: 0, z: 13}
+      blockType: 2
     itemsData:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 13, y: 2, z: 13}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []
   - blockData:
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
@@ -91,6 +98,11 @@ MonoBehaviour:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 13, y: 1, z: 13}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []
   - blockData:
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
@@ -126,6 +138,11 @@ MonoBehaviour:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []
   - blockData:
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
@@ -161,6 +178,11 @@ MonoBehaviour:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []
   - blockData:
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
@@ -196,6 +218,11 @@ MonoBehaviour:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []
   - blockData:
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
@@ -231,6 +258,11 @@ MonoBehaviour:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []
   - blockData:
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
@@ -266,6 +298,11 @@ MonoBehaviour:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []
   - blockData:
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
@@ -301,6 +338,11 @@ MonoBehaviour:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []
   - blockData:
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
@@ -336,6 +378,11 @@ MonoBehaviour:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []
   - blockData:
     - position: {x: 13, y: 0, z: 12}
       blockType: 3
@@ -371,3 +418,8 @@ MonoBehaviour:
     - position: {x: 13, y: 1, z: 16}
       rotation: {x: 0, y: 0, z: 0}
       itemType: 0
+    playerData:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      viewID: 0
+    unitsData: []

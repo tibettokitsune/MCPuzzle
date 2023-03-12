@@ -11,6 +11,7 @@ namespace _Game.Scripts.Infrustructure
     {
         public int level;
 
+        public int skinId;
         public PlayerData()
         {
             

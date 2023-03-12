@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using _Game.Scripts.Configs;
 using _Game.Scripts.Gameplay;

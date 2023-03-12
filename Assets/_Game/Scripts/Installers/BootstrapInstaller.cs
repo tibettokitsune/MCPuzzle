@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using _Game.Scripts.Gameplay;
 using _Game.Scripts.Infrustructure;
-using UnityEngine;
 using Zenject;
 
 public class BootstrapInstaller : MonoInstaller

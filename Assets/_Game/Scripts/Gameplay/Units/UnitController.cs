@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UniRx;
@@ -31,13 +30,6 @@ namespace _Game.Scripts.Gameplay
 
         private void Start()
         {
-            UnitData.speed = 1f / 3f;
-            UnitData.height = 2;
-            
-            UnitData.currentPosition = new Vector3Int((int)transform.position.x, 
-                (int)transform.position.y, 
-                (int)transform.position.z);
-
             OnMovementComplete.Subscribe(
                 _ =>
                 {
@@ -101,6 +93,31 @@ namespace _Game.Scripts.Gameplay
             
             if(direction.y == 0)
                 transform.rotation = Quaternion.LookRotation(direction);
+        }
+        
+        public class Factory : PlaceholderFactory<UnitController, UnitController>
+        {
+            readonly DiContainer _container;
+
+            public Factory(DiContainer container)
+            {
+                _container = container;
+            }
+
+            public UnitController Create(UnityEngine.Object prefab) 
+                => _container.InstantiatePrefabForComponent<UnitController>(prefab);
+        }
+
+        public void SetupUnit(Vector3Int position, Vector3 rotation)
+        {
+            transform.eulerAngles = rotation;
+            transform.position = position;
+            UnitData.currentPosition = position;
+            UnitData.health = 10;
+            UnitData.speed = 1f / 3f;
+            UnitData.height = 2;
+            
+            Move(Vector3Int.down);
         }
     }
 }

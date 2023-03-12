@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 845087717544580318}
   - component: {fileID: 845087717544580319}
-  - component: {fileID: 845087717544580316}
   - component: {fileID: 5330564350473546698}
   - component: {fileID: 5618205546901446166}
   - component: {fileID: 6514502879626334357}
@@ -84,19 +83,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   currentDirection: {x: 0, y: 0, z: -1}
---- !u!114 &845087717544580316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845087717544580321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c63cc60952024f4db8ad7ce8521aee73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characterController: {fileID: 845087717544580319}
 --- !u!114 &5330564350473546698
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using _Game.Scripts.Configs;
 using _Game.Scripts.Infrustructure;
